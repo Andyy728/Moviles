@@ -1,5 +1,6 @@
 package com.example.movilespractica1
 
+import android.media.MediaPlayer
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -23,8 +24,13 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.delay
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
+import androidx.compose.ui.platform.LocalContext
+import com.example.movilespractica1.R
 
 @Composable
 fun QuizQuestion(
@@ -53,13 +59,38 @@ fun QuizQuestion(
     var returnToMenu by remember {mutableStateOf(false)}
     var nextQuestion by remember { mutableStateOf(false) }
     var prevQuestion by remember { mutableStateOf(false) }
+    // Reproducir audio
+        val context = LocalContext.current
 
+        val audioFileName = when (remainingLives) {
+            3 -> question.audioFileName1
+            2 -> question.audioFileName2
+            else -> question.audioFileName3
+        }
+
+        val audioResId = remember(audioFileName) {
+            context.resources.getIdentifier(audioFileName, "raw", context.packageName)
+        }
+        var audioController by remember { mutableStateOf<AudioPlayerController?>(null) }
+
+        DisposableEffect(question) {
+            onDispose {
+                audioController?.release()
+            }
+        }
+    //
     if(!returnToMenu && !prevQuestion && !nextQuestion) {
         LaunchedEffect(question)
         {
             remainingTime = timeLimit
             remainingLives = lives
             gameOver = false
+
+            val resId = context.resources.getIdentifier(question.audioFileName1, "raw", context.packageName)
+            audioController?.release()
+            audioController = AudioPlayerController(context, resId)
+            audioController?.play()
+
             while (remainingTime > 0) {
                 delay(1000L)
                 remainingTime--
@@ -113,6 +144,17 @@ fun QuizQuestion(
                             if (!isCorrect && remainingLives > 0 && !gameWon) {
                                 remainingLives--
                                 currentLifeColors[remainingLives] = incorrectColor
+
+                                val newAudioFileName = when (remainingLives) {
+                                    2 -> question.audioFileName2
+                                    1 -> question.audioFileName3
+                                    else -> question.audioFileName3
+                                }
+                                val newResId = context.resources.getIdentifier(newAudioFileName, "raw", context.packageName)
+                                audioController?.release()
+                                audioController = AudioPlayerController(context, newResId)
+                                audioController?.play()
+
                                 if (remainingLives == 0) {
                                     showIncorrectMessage = true
                                     gameOver = true
@@ -124,8 +166,6 @@ fun QuizQuestion(
                     ) {
                         Text(option)
                     }
-
-
                 }
 
                 Row(
@@ -170,7 +210,13 @@ fun QuizQuestion(
                     )
                 }
 
+                // Reproducir audio
 
+                AudioPlayerUI(
+                    audioController = audioController,
+                    modifier = Modifier.padding(top = 16.dp)
+                )
+                //
             }
             Row(
                 modifier = Modifier
@@ -205,4 +251,41 @@ fun QuizQuestion(
         QuizGame(Modifier, genre, index + 1 )
     }
 
+
+
+
 }
+@Composable
+fun AudioPlayerUI(audioController: AudioPlayerController?, modifier: Modifier = Modifier) {
+    var isPlaying by remember(audioController) { mutableStateOf(false) }
+
+    LaunchedEffect(audioController) {
+        isPlaying = true
+    }
+
+    DisposableEffect(audioController) {
+        onDispose {
+            audioController?.release()
+        }
+    }
+
+    Button(
+        onClick = {
+            if (audioController == null) return@Button
+            if (isPlaying) {
+                audioController.pause()
+                isPlaying = false
+            } else {
+                audioController.play()
+                isPlaying = true
+            }
+        },
+        modifier = modifier
+    ) {
+        Text(if (isPlaying) "❚❚ Pausar audio" else "▶ Reproducir audio")
+    }
+}
+
+
+
+

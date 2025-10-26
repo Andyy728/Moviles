@@ -6,56 +6,14 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 
 @Composable
 fun QuizGame(modifier: Modifier, currentGenre: String?, currentQuestion: Int?)
 {
-
-    val popQuestions = listOf(
-        Question("pop1", listOf("Madrid", "París", "Londres", "Roma"), "París"),
-        Question("¿2 + 2?", listOf("3", "4", "5", "6"), "4"),
-        Question("¿Color del cielo?", listOf("Rojo", "Azul", "Verde", "Negro"), "Azul")
-    )
-
-    val rockQuestions = listOf(
-        Question("rcok1", listOf("Madrid", "París", "Londres", "Roma"), "París"),
-        Question("¿2 + 2?", listOf("3", "4", "5", "6"), "4"),
-        Question("¿Color del cielo?", listOf("Rojo", "Azul", "Verde", "Negro"), "Azul")
-    )
-
-    val reggaetonQuestions = listOf(
-        Question("¿reg1", listOf("Madrid", "París", "Londres", "Roma"), "París"),
-        Question("¿2 + 2?", listOf("3", "4", "5", "6"), "4"),
-        Question("¿Color del cielo?", listOf("Rojo", "Azul", "Verde", "Negro"), "Azul")
-    )
-
-    val electronicQuestions = listOf(
-        Question("¿el1", listOf("Madrid", "París", "Londres", "Roma"), "París"),
-        Question("¿2 + 2?", listOf("3", "4", "5", "6"), "4"),
-        Question("¿Color del cielo?", listOf("Rojo", "Azul", "Verde", "Negro"), "Azul")
-    )
-
-    val miscelaneousQuestions = listOf(
-        Question("¿mis1", listOf("Madrid", "París", "Londres", "Roma"), "París"),
-        Question("¿2 + 2?", listOf("3", "4", "5", "6"), "4"),
-        Question("¿Color del cielo?", listOf("Rojo", "Azul", "Verde", "Negro"), "Azul")
-    )
-
-    val genres = listOf(
-        "Pop",
-        "Rock",
-        "Reggateon",
-        "Electrónica",
-        "Miscelánea"
-    )
-
-    val genreQuestionMap:  Map<String, List<Question>> = mapOf(
-    "Pop" to popQuestions,
-    "Rock" to rockQuestions,
-    "Reggateon" to reggaetonQuestions,
-    "Electrónica" to electronicQuestions,
-    "Miscelánea" to miscelaneousQuestions
-    )
+    val context = LocalContext.current
+    val genreQuestionMap = remember { QuestionRepository.loadQuestions(context) }
+    val genres = genreQuestionMap.keys.toList()
 
     var selectedQuestionIndex by remember {mutableStateOf(currentQuestion)}
     var selectedGenre by remember {mutableStateOf(currentGenre) }
