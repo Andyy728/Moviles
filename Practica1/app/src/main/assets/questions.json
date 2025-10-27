@@ -3,94 +3,84 @@
   "Pop": [
     {
       "text": "1. ¿Cuál será esta canción de POP?",
-      "answers": ["beat it", "París", "Londres", "Roma", "Roma"],
-      "correctAnswer": "beat it",
-      "audioFileName1": "prueba_audio",
-      "audioFileName2": "prueba_audio",
-      "audioFileName3": "prueba_audio",
-      "audioFileName4": "prueba_audio"
+      "answers": ["Beat It", "Thriller", "I Will Always Love You", "Billie Jean", "Hey You"],
+      "correctAnswer": "Beat It",
+      "audioFileName1": "beat_it_pista1",
+      "audioFileName2": "beat_it_pista2",
+      "audioFileName3": "beat_it_pista3",
+      "audioFileName4": "beat_it_pista4"
     },
     {
       "text": "2. ¿Cuál será esta canción de POP?",
-      "answers": ["No puedo vivir sin ti", "4", "5", "6", "Roma"],
-      "correctAnswer": "No puedo vivir sin ti",
-      "audioFileName1": "prueba_audio",
-      "audioFileName2": "prueba_audio",
-      "audioFileName3": "prueba_audio",
-      "audioFileName4": "prueba_audio"
+      "answers": ["Take On Me", "Enola Gay", "Tainted Love", "Self Control", "Sweet Dreams"],
+      "correctAnswer": "Tainted Love",
+      "audioFileName1": "tainted_love_pista1",
+      "audioFileName2": "tainted_love_pista2",
+      "audioFileName3": "tainted_love_pista3",
+      "audioFileName4": "tainted_love_pista4"
     },
     {
-      "text": "3. ¿Cuál será esta canción de POP?",
-      "answers": ["el secreto de las tortugas", "Azul", "Verde", "Negro", "Roma"],
-      "correctAnswer": "el secreto de las tortugas",
-      "audioFileName1": "prueba_audio",
-      "audioFileName2": "prueba_audio",
-      "audioFileName3": "prueba_audio",
-      "audioFileName4": "prueba_audio"
-    },
-    {
-      "text": "4. ¿Cuál será esta canción de POP?",
-      "answers": ["tainted love", "Azul", "Verde", "Negro", "Roma"],
-      "correctAnswer": "tainted love",
-      "audioFileName1": "prueba_audio",
-      "audioFileName2": "prueba_audio",
-      "audioFileName3": "prueba_audio",
-      "audioFileName4": "prueba_audio"
-
+      "text": "2. ¿Cuál será esta canción de POP?",
+      "answers": ["Déjame", "Sin ti no soy nada", "Cien gaviotas", "Por la Raja de Tu Falda", "No Puedo Vivir Sin Ti"],
+      "correctAnswer": "No Puedo Vivir Sin Ti",
+      "audioFileName1": "npvst_pista1",
+      "audioFileName2": "npvst_pista2",
+      "audioFileName3": "npvst_pista3",
+      "audioFileName4": "npvst_pista4"
     }
   ],
   "Rock": [
     {
-      "text": "rcok1",
-      "answers": ["Madrid", "París", "Londres", "Roma", "Roma"],
-      "correctAnswer": "París",
-      "audioFileName1": "prueba_audio",
-      "audioFileName2": "prueba_audio",
-      "audioFileName3": "prueba_audio",
-      "audioFileName4": "prueba_audio"
+      "text": "1. ¿Cuál será esta canción de ROCK?",
+      "answers": ["Welcome To The Jungle", "Highway To Hell", "Iron Man", "Thunderstruck", "Enter Sandman"],
+      "correctAnswer": "Thunderstruck",
+      "audioFileName1": "thunderstruck_pista1",
+      "audioFileName2": "thunderstruck_pista2",
+      "audioFileName3": "thunderstruck_pista3",
+      "audioFileName4": "thunderstruck_pista4"
     },
     {
-      "text": "¿2 + 2?",
-      "answers": ["3", "4", "5", "6", "Roma"],
-      "correctAnswer": "4",
-      "audioFileName1": "prueba_audio",
-      "audioFileName2": "prueba_audio",
-      "audioFileName3": "prueba_audio",
-      "audioFileName4": "prueba_audio"
+      "text": "2. ¿Cuál será esta canción de ROCK?",
+      "answers": ["La vereda de la puerta de atrás", "Soldadito marinero", "So Payaso", "Clavado en un bar", "Zapatillas"],
+      "correctAnswer": "So Payaso",
+      "audioFileName1": "so_payaso_pista1",
+      "audioFileName2": "so_payaso_pista2",
+      "audioFileName3": "so_payaso_pista3",
+      "audioFileName4": "so_payaso_pista4"
     },
     {
-      "text": "¿Color del cielo?",
-      "answers": ["Rojo", "Azul", "Verde", "Negro", "Roma"],
-      "correctAnswer": "Azul",
-      "audioFileName1": "prueba_audio",
-      "audioFileName2": "prueba_audio",
-      "audioFileName3": "prueba_audio",
-      "audioFileName4": "prueba_audio"
+      "text": "3. ¿Cuál será esta canción de ROCK?",
+      "answers": ["The Adults Are Talking", "Reptilia", "Do I Wanna Know?", "Take Me Out", "Mr. Brightside"],
+      "correctAnswer": "Reptilia",
+      "audioFileName1": "reptilia_pista1",
+      "audioFileName2": "reptilia_pista2",
+      "audioFileName3": "reptilia_pista3",
+      "audioFileName4": "reptilia_pista4"
     }
   ],
-  "Reggateon": [
+  "Reggaeton": [
     {
-      "text": "¿reg1",
-      "answers": ["Madrid", "París", "Londres", "Roma", "Roma"],
-      "correctAnswer": "París",
+      "text": "1. ¿Cuál será esta canción de REGGAETON?",
+      "answers": ["Danza Kuduro", "NUEVAYoL", "Limbo", "Gasolina", "Virtual Diva"],
+      "correctAnswer": "Gasolina",
+      "audioFileName1": "gasolina_pista1",
+      "audioFileName2": "gasolina_pista2",
+      "audioFileName3": "gasolina_pista3",
+      "audioFileName4": "gasolina_pista4"
+    },
+    {
+      "text": "2. ¿Cuál será esta canción de REGGAETON?",
+      "answers": ["Tusa", "Fiebre", "Zorra", "Saoko", "Su Payita (Gramos)"],
+      "correctAnswer": "Tusa",
       "audioFileName1": "prueba_audio",
       "audioFileName2": "prueba_audio",
       "audioFileName3": "prueba_audio",
       "audioFileName4": "prueba_audio"
     },
     {
-      "text": "¿2 + 2?",
-      "answers": ["3", "4", "5", "6", "Roma"],
-      "correctAnswer": "4",
-      "audioFileName1": "prueba_audio",
-      "audioFileName2": "prueba_audio",
-      "audioFileName3": "prueba_audio",
-      "audioFileName4": "prueba_audio"
-    },
-    {
-      "text": "¿Color del cielo?",
-      "answers": ["Rojo", "Azul", "Verde", "Negro", "Roma"],
-      "correctAnswer": "Azul",
+      "text": "3. ¿Cuál será esta canción de REGGAETON?",
+      "answers": ["PUNTO 40", "Pobre Diabla", "Noche De Sexo", "Salió El Sol", "Te Voy a Esperar"],
+      "correctAnswer": "Pobre Diabla",
       "audioFileName1": "prueba_audio",
       "audioFileName2": "prueba_audio",
       "audioFileName3": "prueba_audio",
@@ -99,69 +89,60 @@
   ],
   "Electrónica": [
     {
-      "text": "¿el1",
-      "answers": ["Madrid", "París", "Londres", "Roma", "Roma"],
-      "correctAnswer": "París",
-      "audioFileName1": "prueba_audio",
-      "audioFileName2": "prueba_audio",
-      "audioFileName3": "prueba_audio",
-      "audioFileName4": "prueba_audio"
+      "text": "1. ¿Cuál será esta canción de ELECTRÓNICA?",
+      "answers": ["#SELFIE", "Animals", "Get Lucky", "Bangarang", "Instant Crush"],
+      "correctAnswer": "Instant Crush",
+      "audioFileName1": "instant_crush_pista1",
+      "audioFileName2": "instant_crush_pista2",
+      "audioFileName3": "instant_crush_pista3",
+      "audioFileName4": "instant_crush_pista4"
     },
     {
-      "text": "¿2 + 2?",
-      "answers": ["3", "4", "5", "6", "Roma"],
-      "correctAnswer": "4",
-      "audioFileName1": "prueba_audio",
-      "audioFileName2": "prueba_audio",
-      "audioFileName3": "prueba_audio",
-      "audioFileName4": "prueba_audio"
+      "text": "2. ¿Cuál será esta canción de ELECTRÓNICA?",
+      "answers": ["DARE", "Feel Good Inc.", "Bangarang", "6", "Roma"],
+      "correctAnswer": "DARE",
+      "audioFileName1": "dare_pista1",
+      "audioFileName2": "dare_pista2",
+      "audioFileName3": "dare_pista3",
+      "audioFileName4": "dare_pista4"
     },
     {
-      "text": "¿Color del cielo?",
-      "answers": ["Rojo", "Azul", "Verde", "Negro", "Roma"],
-      "correctAnswer": "Azul",
-      "audioFileName1": "prueba_audio",
-      "audioFileName2": "prueba_audio",
-      "audioFileName3": "prueba_audio",
-      "audioFileName4": "prueba_audio"
+      "text": "3. ¿Cuál será esta canción de ELECTRÓNICA?",
+      "answers": ["Silla", "Zorra", "Caramelo", "TOTO DE LOCA", "Safaera"],
+      "correctAnswer": "TOTO DE LOCA",
+      "audioFileName1": "toto_de_loca_pista1",
+      "audioFileName2": "toto_de_loca_pista2",
+      "audioFileName3": "toto_de_loca_pista3",
+      "audioFileName4": "toto_de_loca_pista4"
     }
   ],
-  "Miscelánea": [
+  "Variado": [
     {
-      "text": "¿mis1",
-      "answers": ["Madrid", "París", "Londres", "Roma", "Roma"],
-      "correctAnswer": "París",
-      "audioFileName1": "prueba_audio",
-      "audioFileName2": "prueba_audio",
-      "audioFileName3": "prueba_audio",
-      "audioFileName4": "prueba_audio"
+      "text": "1. ¿Cuál será esta canción de VARIADO?",
+      "answers": ["Devuélveme a mi chica", "Como Camarón", "La casa por el tejado", "Me Cuesta Tanto Olvidarte", "Veneno en la Piel"],
+      "correctAnswer": "Como Camarón",
+      "audioFileName1": "como_camaron_pista1",
+      "audioFileName2": "como_camaron_pista2",
+      "audioFileName3": "como_camaron_pista3",
+      "audioFileName4": "como_camaron_pista4"
     },
     {
-      "text": "¿2 + 2?",
-      "answers": ["3", "4", "5", "6", "Roma"],
-      "correctAnswer": "4",
-      "audioFileName1": "prueba_audio",
-      "audioFileName2": "prueba_audio",
-      "audioFileName3": "prueba_audio",
-      "audioFileName4": "prueba_audio"
+      "text": "2. ¿Cuál será esta canción de VARIADO?",
+      "answers": ["Nada Fue Un Error", "Corazón indomable", "Vino Tinto", "Maldito Duende", "Cuando zarpa el amor"],
+      "correctAnswer": "Cuando zarpa el amor",
+      "audioFileName1": "czea_pista1",
+      "audioFileName2": "czea_pista2",
+      "audioFileName3": "czea_pista3",
+      "audioFileName4": "czea_pista4"
     },
     {
-      "text": "¿Color del cielo?",
-      "answers": ["Rojo", "Azul", "Verde", "Negro", "Roma"],
-      "correctAnswer": "Azul",
-      "audioFileName1": "prueba_audio",
-      "audioFileName2": "prueba_audio",
-      "audioFileName3": "prueba_audio",
-      "audioFileName4": "prueba_audio"
-    },
-    {
-      "text": "¿Color del cielo?",
-      "answers": ["Rojo", "Azul", "Verde", "Negro", "Roma"],
-      "correctAnswer": "Azul",
-      "audioFileName1": "prueba_audio",
-      "audioFileName2": "prueba_audio",
-      "audioFileName3": "prueba_audio",
-      "audioFileName4": "prueba_audio"
+      "text": "3. ¿Cuál será esta canción de VARIADO?",
+      "answers": ["Nobody", "American Teenager", "Washing Machine Heart", "My Love Mine All Mine", "Summertime Sadness"],
+      "correctAnswer": "Washing Machine Heart",
+      "audioFileName1": "wmh_pista1",
+      "audioFileName2": "wmh_pista2",
+      "audioFileName3": "wmh_pista3",
+      "audioFileName4": "wmh_pista4"
     }
   ]
 }
