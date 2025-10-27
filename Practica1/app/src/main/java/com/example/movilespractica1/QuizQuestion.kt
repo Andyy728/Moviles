@@ -31,6 +31,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.platform.LocalContext
 import com.example.movilespractica1.R
+import kotlinx.coroutines.launch
 
 @Composable
 fun QuizQuestion(
@@ -39,14 +40,18 @@ fun QuizQuestion(
     questions: List<Question>,
     genre: String
 ){
+    val context = LocalContext.current
     val questionText = question.text
     val options = question.answers
     val correctAnswer = question.correctAnswer
     val timeLimit = 10
-    val lives = 3
+    val lives = 4
     val correctColor = Color(0xFF4CAF50)
     val incorrectColor = Color(0xFFFF686B)
-    val lifeColors = arrayOf(correctColor, correctColor, correctColor)
+    val lifeColors = arrayOf(correctColor, correctColor, correctColor, correctColor)
+    val scope = rememberCoroutineScope()
+    val progressFlow = remember { DataSaver.getProgress(context, genre) }
+    val progress by progressFlow.collectAsState(initial = 0)
 
     var selectedOption by remember { mutableStateOf<String?>(null) }
     var showCorrectMessage by remember { mutableStateOf(false) }
@@ -59,8 +64,9 @@ fun QuizQuestion(
     var returnToMenu by remember {mutableStateOf(false)}
     var nextQuestion by remember { mutableStateOf(false) }
     var prevQuestion by remember { mutableStateOf(false) }
+
     // Reproducir audio
-        val context = LocalContext.current
+
 
         val audioFileName = when (remainingLives) {
             3 -> question.audioFileName1
@@ -137,10 +143,14 @@ fun QuizQuestion(
                             if (!gameOver && !gameWon)
                                 selectedOption = option
 
-                            if (isCorrect) {
+                            if (isCorrect && !gameOver) {
                                 gameWon = true
                                 showCorrectMessage = true
+                                scope.launch {
+                                    DataSaver.saveProgress(context, genre, progress + 1)
+                                }
                             }
+
                             if (!isCorrect && remainingLives > 0 && !gameWon) {
                                 remainingLives--
                                 currentLifeColors[remainingLives] = incorrectColor
@@ -157,6 +167,7 @@ fun QuizQuestion(
 
                                 if (remainingLives == 0) {
                                     showIncorrectMessage = true
+
                                     gameOver = true
                                 }
                             }
@@ -176,21 +187,27 @@ fun QuizQuestion(
                 ) {
                     Card(
                         colors = CardDefaults.cardColors(
+                            containerColor = currentLifeColors[3] // color de fondo
+                        ),
+                        modifier = Modifier.size(45.dp)
+                    ) {}
+                    Card(
+                        colors = CardDefaults.cardColors(
                             containerColor = currentLifeColors[2] // color de fondo
                         ),
-                        modifier = Modifier.size(80.dp)
+                        modifier = Modifier.size(45.dp)
                     ) {}
                     Card(
                         colors = CardDefaults.cardColors(
                             containerColor = currentLifeColors[1] // color de fondo
                         ),
-                        modifier = Modifier.size(80.dp)
+                        modifier = Modifier.size(45.dp)
                     ) {}
                     Card(
                         colors = CardDefaults.cardColors(
                             containerColor = currentLifeColors[0] // color de fondo
                         ),
-                        modifier = Modifier.size(80.dp)
+                        modifier = Modifier.size(45.dp)
                     ) {}
                 }
 
@@ -199,7 +216,9 @@ fun QuizQuestion(
                         text = "¡Correcto! Salchicha te da un besito",
                         color = correctColor,
                         style = MaterialTheme.typography.bodyLarge
+
                     )
+
                 }
 
                 if (showIncorrectMessage) {
@@ -218,6 +237,11 @@ fun QuizQuestion(
                 )
                 //
             }
+            /*Text(
+                text = "${progress}", //linea de testeo
+                color = incorrectColor,
+                style = MaterialTheme.typography.bodyLarge
+            )*/
             Row(
                 modifier = Modifier
                     .align(Alignment.BottomCenter) // 👈 coloca la fila abajo
@@ -230,12 +254,21 @@ fun QuizQuestion(
                 Button(onClick = {
                     if (index - 1 >= 0)
                         prevQuestion = true
-                }) { Text("<") }
+                },
+                        colors =  ButtonDefaults.buttonColors(
+                        containerColor =  if(index - 1 >= 0) Color.White else Color.Black
+                        )
+                ) { Text("<") }
                 Button(onClick = { returnToMenu = true }) { Text("\uD83C\uDFE0") }
-                Button(onClick = {
-                    if (index + 1 < questions.count())
+                Button(
+                    onClick = {
+                    if (index + 1 < questions.count() && progress >= index + 1)
                         nextQuestion = true
-                }) { Text(">") }
+                },
+                    colors =  ButtonDefaults.buttonColors(
+                        containerColor =  if(index + 1 < questions.count() && progress >= index + 1) Color.White else Color.Black
+                    )
+                ) { Text(">") }
             }
         }
     }

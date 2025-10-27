@@ -25,7 +25,7 @@ fun QuizGame(modifier: Modifier, currentGenre: String?, currentQuestion: Int?)
         GenreSelector(genres, onSelect = { selectedGenre = it})
     }else {
         if (selectedQuestionIndex == null) {
-            QuestionSelector(genreQuestionMap[selectedGenre!!]!!, { selectedQuestionIndex = it })
+            QuestionSelector(genreQuestionMap[selectedGenre!!]!!, { selectedQuestionIndex = it }, selectedGenre!!)
         } else {
             selectedGenre?.let { genre ->
                 selectedQuestionIndex?.let { index ->
@@ -34,7 +34,8 @@ fun QuizGame(modifier: Modifier, currentGenre: String?, currentQuestion: Int?)
                     }
                 } ?: QuestionSelector(
                     genreQuestionMap[genre].orEmpty(),
-                    onSelect = { selectedQuestionIndex = it }
+                    onSelect = { selectedQuestionIndex = it },
+                    genre
                 )
             } ?: GenreSelector(genres, onSelect = { selectedGenre = it })
         }

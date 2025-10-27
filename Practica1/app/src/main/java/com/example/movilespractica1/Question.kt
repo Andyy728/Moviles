@@ -3,10 +3,12 @@ package com.example.movilespractica1
 data class Question(
     val text: String,
     val answers: List<String>,
+
     val correctAnswer: String,
     val audioFileName1: String,
     val audioFileName2: String,
-    val audioFileName3: String
+    val audioFileName3: String,
+    val audioFileName4: String
 )
 /* JSON: Practica1/app/src/main/assets/questions.json
 *           IMPORTANTE última línea sin coma

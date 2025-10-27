@@ -5,25 +5,32 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.modifier.modifierLocalOf
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 
 
 @Composable
 fun QuestionSelector(
     questions: List<Question>,
-    onSelect: (Int) -> Unit
-
+    onSelect: (Int) -> Unit,
+    genre: String
 )
 {
+    val context = LocalContext.current
     var returnToMenu by remember {mutableStateOf(false)}
+
+    val progressFlow = remember { DataSaver.getProgress(context, genre) }
+    val progress by progressFlow.collectAsState(initial = 0)
 
     if(!returnToMenu) {
         Box(
@@ -50,11 +57,21 @@ fun QuestionSelector(
                 {
                     itemsIndexed(questions) { index, _ ->
                         Card(
-                            onClick = { onSelect(index) },
+                            onClick = {
+                                if(progress >= index)
+                                onSelect(index)
+                                      },
                             modifier = Modifier
                                 .aspectRatio(2.5f)
                                 .fillMaxWidth(),
-                            colors = CardDefaults.cardColors(containerColor = Color(0xFF000000))
+                            colors =
+                                if(progress >= index) {
+                                    CardDefaults.cardColors(containerColor = Color(0xFF000000))
+                                }
+                                else{
+                                    CardDefaults.cardColors(containerColor = Color(0xFF151515))
+                                }
+
                         )
                         {
                             Box(

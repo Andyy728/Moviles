@@ -3,147 +3,165 @@
   "Pop": [
     {
       "text": "1. ¿Cuál será esta canción de POP?",
-      "answers": ["beat it", "París", "Londres", "Roma"],
+      "answers": ["beat it", "París", "Londres", "Roma", "Roma"],
       "correctAnswer": "beat it",
       "audioFileName1": "prueba_audio",
       "audioFileName2": "prueba_audio",
-      "audioFileName3": "prueba_audio"
+      "audioFileName3": "prueba_audio",
+      "audioFileName4": "prueba_audio"
     },
     {
       "text": "2. ¿Cuál será esta canción de POP?",
-      "answers": ["No puedo vivir sin ti", "4", "5", "6"],
+      "answers": ["No puedo vivir sin ti", "4", "5", "6", "Roma"],
       "correctAnswer": "No puedo vivir sin ti",
       "audioFileName1": "prueba_audio",
       "audioFileName2": "prueba_audio",
-      "audioFileName3": "prueba_audio"
+      "audioFileName3": "prueba_audio",
+      "audioFileName4": "prueba_audio"
     },
     {
       "text": "3. ¿Cuál será esta canción de POP?",
-      "answers": ["el secreto de las tortugas", "Azul", "Verde", "Negro"],
+      "answers": ["el secreto de las tortugas", "Azul", "Verde", "Negro", "Roma"],
       "correctAnswer": "el secreto de las tortugas",
       "audioFileName1": "prueba_audio",
       "audioFileName2": "prueba_audio",
-      "audioFileName3": "prueba_audio"
+      "audioFileName3": "prueba_audio",
+      "audioFileName4": "prueba_audio"
     },
     {
       "text": "4. ¿Cuál será esta canción de POP?",
-      "answers": ["tainted love", "Azul", "Verde", "Negro"],
+      "answers": ["tainted love", "Azul", "Verde", "Negro", "Roma"],
       "correctAnswer": "tainted love",
       "audioFileName1": "prueba_audio",
       "audioFileName2": "prueba_audio",
-      "audioFileName3": "prueba_audio"
+      "audioFileName3": "prueba_audio",
+      "audioFileName4": "prueba_audio"
+
     }
   ],
   "Rock": [
     {
       "text": "rcok1",
-      "answers": ["Madrid", "París", "Londres", "Roma"],
+      "answers": ["Madrid", "París", "Londres", "Roma", "Roma"],
       "correctAnswer": "París",
       "audioFileName1": "prueba_audio",
       "audioFileName2": "prueba_audio",
-      "audioFileName3": "prueba_audio"
+      "audioFileName3": "prueba_audio",
+      "audioFileName4": "prueba_audio"
     },
     {
       "text": "¿2 + 2?",
-      "answers": ["3", "4", "5", "6"],
+      "answers": ["3", "4", "5", "6", "Roma"],
       "correctAnswer": "4",
       "audioFileName1": "prueba_audio",
       "audioFileName2": "prueba_audio",
-      "audioFileName3": "prueba_audio"
+      "audioFileName3": "prueba_audio",
+      "audioFileName4": "prueba_audio"
     },
     {
       "text": "¿Color del cielo?",
-      "answers": ["Rojo", "Azul", "Verde", "Negro"],
+      "answers": ["Rojo", "Azul", "Verde", "Negro", "Roma"],
       "correctAnswer": "Azul",
       "audioFileName1": "prueba_audio",
       "audioFileName2": "prueba_audio",
-      "audioFileName3": "prueba_audio"
+      "audioFileName3": "prueba_audio",
+      "audioFileName4": "prueba_audio"
     }
   ],
   "Reggateon": [
     {
       "text": "¿reg1",
-      "answers": ["Madrid", "París", "Londres", "Roma"],
+      "answers": ["Madrid", "París", "Londres", "Roma", "Roma"],
       "correctAnswer": "París",
       "audioFileName1": "prueba_audio",
       "audioFileName2": "prueba_audio",
-      "audioFileName3": "prueba_audio"
+      "audioFileName3": "prueba_audio",
+      "audioFileName4": "prueba_audio"
     },
     {
       "text": "¿2 + 2?",
-      "answers": ["3", "4", "5", "6"],
+      "answers": ["3", "4", "5", "6", "Roma"],
       "correctAnswer": "4",
       "audioFileName1": "prueba_audio",
       "audioFileName2": "prueba_audio",
-      "audioFileName3": "prueba_audio"
+      "audioFileName3": "prueba_audio",
+      "audioFileName4": "prueba_audio"
     },
     {
       "text": "¿Color del cielo?",
-      "answers": ["Rojo", "Azul", "Verde", "Negro"],
+      "answers": ["Rojo", "Azul", "Verde", "Negro", "Roma"],
       "correctAnswer": "Azul",
       "audioFileName1": "prueba_audio",
       "audioFileName2": "prueba_audio",
-      "audioFileName3": "prueba_audio"
+      "audioFileName3": "prueba_audio",
+      "audioFileName4": "prueba_audio"
     }
   ],
   "Electrónica": [
     {
       "text": "¿el1",
-      "answers": ["Madrid", "París", "Londres", "Roma"],
+      "answers": ["Madrid", "París", "Londres", "Roma", "Roma"],
       "correctAnswer": "París",
       "audioFileName1": "prueba_audio",
       "audioFileName2": "prueba_audio",
-      "audioFileName3": "prueba_audio"
+      "audioFileName3": "prueba_audio",
+      "audioFileName4": "prueba_audio"
     },
     {
       "text": "¿2 + 2?",
-      "answers": ["3", "4", "5", "6"],
+      "answers": ["3", "4", "5", "6", "Roma"],
       "correctAnswer": "4",
       "audioFileName1": "prueba_audio",
       "audioFileName2": "prueba_audio",
-      "audioFileName3": "prueba_audio"
+      "audioFileName3": "prueba_audio",
+      "audioFileName4": "prueba_audio"
     },
     {
       "text": "¿Color del cielo?",
-      "answers": ["Rojo", "Azul", "Verde", "Negro"],
+      "answers": ["Rojo", "Azul", "Verde", "Negro", "Roma"],
       "correctAnswer": "Azul",
       "audioFileName1": "prueba_audio",
       "audioFileName2": "prueba_audio",
-      "audioFileName3": "prueba_audio"
+      "audioFileName3": "prueba_audio",
+      "audioFileName4": "prueba_audio"
     }
   ],
   "Miscelánea": [
     {
       "text": "¿mis1",
-      "answers": ["Madrid", "París", "Londres", "Roma"],
+      "answers": ["Madrid", "París", "Londres", "Roma", "Roma"],
       "correctAnswer": "París",
       "audioFileName1": "prueba_audio",
       "audioFileName2": "prueba_audio",
-      "audioFileName3": "prueba_audio"
+      "audioFileName3": "prueba_audio",
+      "audioFileName4": "prueba_audio"
     },
     {
       "text": "¿2 + 2?",
-      "answers": ["3", "4", "5", "6"],
+      "answers": ["3", "4", "5", "6", "Roma"],
       "correctAnswer": "4",
       "audioFileName1": "prueba_audio",
       "audioFileName2": "prueba_audio",
-      "audioFileName3": "prueba_audio"
+      "audioFileName3": "prueba_audio",
+      "audioFileName4": "prueba_audio"
     },
     {
       "text": "¿Color del cielo?",
-      "answers": ["Rojo", "Azul", "Verde", "Negro"],
+      "answers": ["Rojo", "Azul", "Verde", "Negro", "Roma"],
       "correctAnswer": "Azul",
       "audioFileName1": "prueba_audio",
       "audioFileName2": "prueba_audio",
-      "audioFileName3": "prueba_audio"
+      "audioFileName3": "prueba_audio",
+      "audioFileName4": "prueba_audio"
     },
     {
       "text": "¿Color del cielo?",
-      "answers": ["Rojo", "Azul", "Verde", "Negro"],
+      "answers": ["Rojo", "Azul", "Verde", "Negro", "Roma"],
       "correctAnswer": "Azul",
       "audioFileName1": "prueba_audio",
       "audioFileName2": "prueba_audio",
-      "audioFileName3": "prueba_audio"
+      "audioFileName3": "prueba_audio",
+      "audioFileName4": "prueba_audio"
     }
   ]
 }
