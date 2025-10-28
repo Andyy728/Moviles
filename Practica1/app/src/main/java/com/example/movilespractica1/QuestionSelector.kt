@@ -17,6 +17,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.modifier.modifierLocalOf
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 
 
 @Composable
@@ -66,10 +67,15 @@ fun QuestionSelector(
                                 .fillMaxWidth(),
                             colors =
                                 if(progress >= index) {
-                                    CardDefaults.cardColors(containerColor = Color(0xFF000000))
+                                    CardDefaults.cardColors(containerColor = Color(0xFFafc6fe),
+                                        contentColor = Color(0xFF000000)
+                                    )
+
                                 }
                                 else{
-                                    CardDefaults.cardColors(containerColor = Color(0xFF151515))
+                                    CardDefaults.cardColors(containerColor = Color(0xFF151515),
+                                        contentColor = Color(0xFFFFFFFF)
+                                    )
                                 }
 
                         )
@@ -79,7 +85,8 @@ fun QuestionSelector(
                                 modifier = Modifier.fillMaxSize()
                             )
                             {
-                                Text("${index + 1}")
+                                Text("${index + 1}",
+                                fontSize = 20.sp)
                             }
                         }
                     }

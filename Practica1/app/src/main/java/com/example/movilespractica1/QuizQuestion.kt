@@ -8,6 +8,7 @@ import android.text.style.DynamicDrawableSpan.ALIGN_CENTER
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -33,6 +34,7 @@ import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.delay
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -74,13 +76,20 @@ fun QuizQuestion(
 
     // Reproducir audio
 
-
-        val audioFileName = when (remainingLives) {
-            4 -> question.audioFileName1
-            3 -> question.audioFileName2
-            2-> question.audioFileName3
-            else -> question.audioFileName4
+        val audioFileName: String
+        if(!gameWon) {
+            audioFileName = when (remainingLives) {
+                4 -> question.audioFileName1
+                3 -> question.audioFileName2
+                2 -> question.audioFileName3
+                else -> question.audioFileName4
+            }
         }
+        else
+        {
+            audioFileName = question.audioFileName4
+        }
+
 
         val audioResId = remember(audioFileName) {
             context.resources.getIdentifier(audioFileName, "raw", context.packageName)
@@ -154,24 +163,40 @@ fun QuizQuestion(
                             if (!gameOver && !gameWon)
                                 selectedOption = option
 
+
                             if (isCorrect && !gameOver) {
                                 gameWon = true
                                 showCorrectMessage = true
+
+                                audioController?.pause()
+                                audioController?.release()
+
+                                val winResId = context.resources.getIdentifier(question.audioFileName4, "raw", context.packageName)
+                                audioController = AudioPlayerController(context, winResId)
+                                audioController?.play()
+
                                 scope.launch {
                                     DataSaver.saveProgress(context, genre, progress + 1)
                                 }
                             }
 
+
                             if (!isCorrect && remainingLives > 0 && !gameWon) {
                                 remainingLives--
                                 currentLifeColors[remainingLives] = incorrectColor
 
-                                val newAudioFileName = when (remainingLives) {
-                                    4 -> question.audioFileName1
-                                    3 -> question.audioFileName2
-                                    2 -> question.audioFileName3
-                                    1 -> question.audioFileName4
-                                    else -> question.audioFileName4
+                                val newAudioFileName: String
+                                if(!gameWon) {
+                                    newAudioFileName = when (remainingLives) {
+                                        4 -> question.audioFileName1
+                                        3 -> question.audioFileName2
+                                        2 -> question.audioFileName3
+                                        1 -> question.audioFileName4
+                                        else -> question.audioFileName4
+                                    }
+                                }
+                                else{
+                                    newAudioFileName = question.audioFileName4
                                 }
                                 val newResId = context.resources.getIdentifier(newAudioFileName, "raw", context.packageName)
                                 audioController?.release()
@@ -231,7 +256,6 @@ fun QuizQuestion(
                         style = MaterialTheme.typography.bodyLarge
 
                     )
-
                 }
 
                 if (showIncorrectMessage) {
@@ -269,7 +293,7 @@ fun QuizQuestion(
                         prevQuestion = true
                 },
                         colors =  ButtonDefaults.buttonColors(
-                        containerColor =  if(index - 1 >= 0) Color.White else Color.Black
+                        containerColor =  if(index - 1 >= 0) Color(0xFFafc6fe) else Color.Black
                         )
                 ) {
                     Image(
@@ -291,7 +315,7 @@ fun QuizQuestion(
                         nextQuestion = true
                 },
                     colors =  ButtonDefaults.buttonColors(
-                        containerColor =  if(index + 1 < questions.count() && progress >= index + 1) Color.White else Color.Black
+                        containerColor =  if(index + 1 < questions.count() && progress >= index + 1) Color(0xFFafc6fe) else Color.Black
                     )
                 ) {
                     Image(
@@ -333,52 +357,66 @@ fun AudioPlayerUI(audioController: AudioPlayerController?, modifier: Modifier = 
         }
     }
 
-    Button(
-        onClick = {
-            if (audioController == null) return@Button
+    Row (modifier = Modifier
+            .fillMaxWidth()
+        .padding(16.dp),
+        horizontalArrangement = Arrangement.SpaceEvenly,
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        //Boton de reinicio
+        Button(
+            onClick = {
+                if (audioController == null) return@Button
+                if (isPlaying) {
+                    audioController.pause()
+                    isPlaying = false
+                } else {
+                    audioController.play()
+                    isPlaying = true
+                }
+            },
+            modifier = Modifier.size(70.dp),
+            contentPadding = PaddingValues(0.dp)
+        ) {
             if (isPlaying) {
-                audioController.pause()
-                isPlaying = false
+                Image(
+                    painter = painterResource(id = R.drawable.boton_pausa),
+                    contentDescription = "Anterior",
+                    modifier = Modifier.fillMaxSize(.65f),
+                    contentScale = ContentScale.Fit
+                )
             } else {
-                audioController.play()
-                isPlaying = true
+                Image(
+                    painter = painterResource(id = R.drawable.boton_play),
+                    contentDescription = "Anterior",
+                    modifier = Modifier.fillMaxSize(.65f),
+                    contentScale = ContentScale.Fit
+                )
             }
-        },
-        modifier = modifier
-    ) {
-        if (isPlaying){
-            Image(
-                painter = painterResource(id = R.drawable.boton_pausa),
-                contentDescription = "Anterior",
-                modifier = Modifier.size(40.dp))
-        } else {
-            Image(
-                painter = painterResource(id = R.drawable.boton_play),
-                contentDescription = "Anterior",
-                modifier = Modifier.size(40.dp)
-            )
+
         }
 
-    }
-
-    // Botón de Reinicio
-    Button(
-        onClick = {
-            audioController?.seekTo(0)
-            if (!isPlaying) {
-                audioController?.play()
-                isPlaying = true
-            }
-        }
-    ) {
+        // Botón de Reinicio
+        Button(
+            onClick = {
+                audioController?.seekTo(0)
+                if (!isPlaying) {
+                    audioController?.play()
+                    isPlaying = true
+                }
+            },
+                    modifier = Modifier.size(70.dp),
+                            contentPadding = PaddingValues(0.dp)
+        ) {
 
             Image(
                 painter = painterResource(id = R.drawable.boton_regreso),
                 contentDescription = "Anterior",
-                modifier = Modifier.size(40.dp),
+                modifier = Modifier.fillMaxSize(.85f)
 
-            )
+                )
 
+        }
     }
 }
 

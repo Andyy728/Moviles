@@ -56,7 +56,7 @@ fun GenreSelector(
                         modifier = Modifier
                             .aspectRatio(2.5f)
                             .fillMaxWidth(),
-                        colors = CardDefaults.cardColors(containerColor = Color(0xFF000000))
+                        colors = CardDefaults.cardColors(containerColor = Color(0xFFafc6fe))
                     )
                     {
                         Box(contentAlignment = Alignment.Center, modifier = Modifier.fillMaxSize())
