@@ -1,5 +1,7 @@
 package com.example.movilespractica1
 
+import androidx.compose.foundation.Image
+import androidx.compose.ui.res.painterResource
 import android.media.MediaPlayer
 import android.text.Layout
 import android.text.style.DynamicDrawableSpan.ALIGN_CENTER
@@ -32,6 +34,7 @@ import kotlinx.coroutines.delay
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import com.example.movilespractica1.R
@@ -268,8 +271,20 @@ fun QuizQuestion(
                         colors =  ButtonDefaults.buttonColors(
                         containerColor =  if(index - 1 >= 0) Color.White else Color.Black
                         )
-                ) { Text("<") }
-                Button(onClick = { returnToMenu = true }) { Text("\uD83C\uDFE0") }
+                ) {
+                    Image(
+                        painter = painterResource(id = R.drawable.boton_izquierda),
+                        contentDescription = "Anterior",
+                        modifier = Modifier.size(40.dp)
+                    )
+                }
+                Button(onClick = { returnToMenu = true }) {
+                    Image(
+                        painter = painterResource(id = R.drawable.boton_casa),
+                        contentDescription = "Casa",
+                        modifier = Modifier.size(40.dp)
+                    )
+                }
                 Button(
                     onClick = {
                     if (index + 1 < questions.count() && progress >= index + 1)
@@ -278,7 +293,13 @@ fun QuizQuestion(
                     colors =  ButtonDefaults.buttonColors(
                         containerColor =  if(index + 1 < questions.count() && progress >= index + 1) Color.White else Color.Black
                     )
-                ) { Text(">") }
+                ) {
+                    Image(
+                        painter = painterResource(id = R.drawable.boton_derecha),
+                        contentDescription = "Siguiente",
+                        modifier = Modifier.size(40.dp)
+                    )
+                }
             }
         }
     }
@@ -325,7 +346,19 @@ fun AudioPlayerUI(audioController: AudioPlayerController?, modifier: Modifier = 
         },
         modifier = modifier
     ) {
-        Text(if (isPlaying) "❚❚ Pausar audio" else "▶ Reproducir audio")
+        if (isPlaying){
+            Image(
+                painter = painterResource(id = R.drawable.boton_pausa),
+                contentDescription = "Anterior",
+                modifier = Modifier.size(40.dp))
+        } else {
+            Image(
+                painter = painterResource(id = R.drawable.boton_play),
+                contentDescription = "Anterior",
+                modifier = Modifier.size(40.dp)
+            )
+        }
+
     }
 
     // Botón de Reinicio
@@ -338,12 +371,14 @@ fun AudioPlayerUI(audioController: AudioPlayerController?, modifier: Modifier = 
             }
         }
     ) {
-        Text(
-            text = "⟳",
-            fontSize = 28.sp,
-            fontWeight = FontWeight.Bold,
-            color = Color.Black,
-            modifier = Modifier.align(Alignment.CenterVertically))
+
+            Image(
+                painter = painterResource(id = R.drawable.boton_regreso),
+                contentDescription = "Anterior",
+                modifier = Modifier.size(40.dp),
+
+            )
+
     }
 }
 
