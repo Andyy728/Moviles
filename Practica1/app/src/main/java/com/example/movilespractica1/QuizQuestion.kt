@@ -48,7 +48,7 @@ fun QuizQuestion(
     val questionText = question.text
     val options = question.answers
     val correctAnswer = question.correctAnswer
-    val timeLimit = 10
+    // val timeLimit = 10
     val lives = 4
     val correctColor = Color(0xFF4CAF50)
     val incorrectColor = Color(0xFFFF686B)
@@ -60,7 +60,7 @@ fun QuizQuestion(
     var selectedOption by remember { mutableStateOf<String?>(null) }
     var showCorrectMessage by remember { mutableStateOf(false) }
     var showIncorrectMessage by remember { mutableStateOf(false) }
-    var remainingTime by remember { mutableStateOf(timeLimit)}
+    // var remainingTime by remember { mutableStateOf(timeLimit)}
     var remainingLives by remember {mutableStateOf(lives)}
     var currentLifeColors by remember {mutableStateOf(lifeColors)}
     var gameOver by remember {mutableStateOf(false)}
@@ -93,7 +93,7 @@ fun QuizQuestion(
     if(!returnToMenu && !prevQuestion && !nextQuestion) {
         LaunchedEffect(question)
         {
-            remainingTime = timeLimit
+            // remainingTime = timeLimit
             remainingLives = lives
             gameOver = false
 
@@ -102,10 +102,13 @@ fun QuizQuestion(
             audioController = AudioPlayerController(context, resId)
             audioController?.play()
 
+            /*
             while (remainingTime > 0) {
                 delay(1000L)
                 remainingTime--
             }
+
+             */
 
         }
 
@@ -121,7 +124,7 @@ fun QuizQuestion(
                     .padding(40.dp)
             ) {
                 Text(text = questionText, style = MaterialTheme.typography.headlineSmall)
-                Text(text = "$remainingTime", style = MaterialTheme.typography.headlineSmall)
+                // Text(text = "$remainingTime", style = MaterialTheme.typography.headlineSmall)
 
                 options.forEach { option ->
                     val isCorrect = option == correctAnswer
@@ -220,7 +223,7 @@ fun QuizQuestion(
 
                 if (showCorrectMessage) {
                     Text(
-                        text = "¡Correcto! Salchicha te da un besito",
+                        text = "¡Correcto!",
                         color = correctColor,
                         style = MaterialTheme.typography.bodyLarge
 
@@ -251,7 +254,7 @@ fun QuizQuestion(
             )*/
             Row(
                 modifier = Modifier
-                    .align(Alignment.BottomCenter) // 👈 coloca la fila abajo
+                    .align(Alignment.BottomCenter)
                     .fillMaxWidth()
                     .padding(bottom = 24.dp)
                     .padding(16.dp),
