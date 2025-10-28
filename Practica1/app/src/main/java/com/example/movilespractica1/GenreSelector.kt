@@ -1,6 +1,8 @@
 package com.example.movilespractica1
 
 import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.Image
+import androidx.compose.ui.res.painterResource
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.*
 import androidx.compose.material3.*
@@ -18,6 +20,14 @@ fun GenreSelector(
     onSelect: (String) -> Unit
 )
 {
+    // Mapa de género -> imagen
+    val genreImages = mapOf(
+        "Rock" to R.drawable.logo_rock,
+        "Pop" to R.drawable.logo_pop,
+        "Electrónica" to R.drawable.logo_electronica,
+        "Reggaeton" to R.drawable.logo_reggaeton,
+        "Variado" to R.drawable.logo_variado
+    )
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -51,7 +61,17 @@ fun GenreSelector(
                     {
                         Box(contentAlignment = Alignment.Center, modifier = Modifier.fillMaxSize())
                         {
-                            Text(genre)
+                            val imageRes = genreImages[genre]
+                            if (imageRes != null){
+                                Image(
+                                    painter = painterResource(id = imageRes),
+                                    contentDescription = genre,
+                                    modifier = Modifier.fillMaxSize()
+                                )
+                            }
+                            else{
+                                Text(genre)
+                            }
                         }
                     }
                 }
