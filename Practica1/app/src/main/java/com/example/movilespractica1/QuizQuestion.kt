@@ -1,6 +1,8 @@
 package com.example.movilespractica1
 
 import android.media.MediaPlayer
+import android.text.Layout
+import android.text.style.DynamicDrawableSpan.ALIGN_CENTER
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -30,6 +32,8 @@ import kotlinx.coroutines.delay
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.sp
 import com.example.movilespractica1.R
 import kotlinx.coroutines.launch
 
@@ -69,9 +73,10 @@ fun QuizQuestion(
 
 
         val audioFileName = when (remainingLives) {
-            3 -> question.audioFileName1
-            2 -> question.audioFileName2
-            else -> question.audioFileName3
+            4 -> question.audioFileName1
+            3 -> question.audioFileName2
+            2-> question.audioFileName3
+            else -> question.audioFileName4
         }
 
         val audioResId = remember(audioFileName) {
@@ -156,9 +161,11 @@ fun QuizQuestion(
                                 currentLifeColors[remainingLives] = incorrectColor
 
                                 val newAudioFileName = when (remainingLives) {
-                                    2 -> question.audioFileName2
-                                    1 -> question.audioFileName3
-                                    else -> question.audioFileName3
+                                    4 -> question.audioFileName1
+                                    3 -> question.audioFileName2
+                                    2 -> question.audioFileName3
+                                    1 -> question.audioFileName4
+                                    else -> question.audioFileName4
                                 }
                                 val newResId = context.resources.getIdentifier(newAudioFileName, "raw", context.packageName)
                                 audioController?.release()
@@ -316,6 +323,24 @@ fun AudioPlayerUI(audioController: AudioPlayerController?, modifier: Modifier = 
         modifier = modifier
     ) {
         Text(if (isPlaying) "❚❚ Pausar audio" else "▶ Reproducir audio")
+    }
+
+    // Botón de Reinicio
+    Button(
+        onClick = {
+            audioController?.seekTo(0)
+            if (!isPlaying) {
+                audioController?.play()
+                isPlaying = true
+            }
+        }
+    ) {
+        Text(
+            text = "⟳",
+            fontSize = 28.sp,
+            fontWeight = FontWeight.Bold,
+            color = Color.Black,
+            modifier = Modifier.align(Alignment.CenterVertically))
     }
 }
 

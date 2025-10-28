@@ -25,5 +25,8 @@ class AudioPlayerController(context: Context, @RawRes audioResId: Int) {
     fun release() {
         mediaPlayer.release()
     }
+    fun seekTo(position: Int) {
+        mediaPlayer?.seekTo(position)
+    }
 
 }
